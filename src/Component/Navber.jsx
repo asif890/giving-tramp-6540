@@ -6,7 +6,7 @@ const Navbar=()=>{
     const links=[
         {path:"/",title:"Home"},
         {path:"/login",title:"Login"},
-        {path:"/product",title:"Product"}
+        {path:"/product",title:"Cart"}
         
        
     ]
