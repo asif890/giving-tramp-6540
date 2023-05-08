@@ -74,7 +74,7 @@ function Home (){
     
     
     return (
-        <div>
+        <div style={{marginTop:"20px"}}>
         
             <div className="App">
       <div>
@@ -119,9 +119,6 @@ function Home (){
           <label>Roses</label>
           </div>
 
-
-
-
           <div>
           <input type="radio" name='category' value="category" 
           checked ={filterby=="occasions"}
@@ -138,7 +135,7 @@ function Home (){
           }}
           />
           <label>reset</label> */}
-          <div><button onClick={()=>setfilterby("")}>reset</button></div>
+          <div><button onClick={()=>setfilterby("")}>All Flower</button></div>
         </div>
         <div>
        <button onClick={()=>setsortby("asc")}>sort by asc</button>
@@ -150,40 +147,25 @@ function Home (){
         <img src={logo} alt='fon'/>
         <div style={{display:'grid',gridTemplateColumns:"repeat(4,1fr)"}}>
           {data.map((el,i)=>(
-            <div key={el.id}>
+            <div style={{marginTop:"20px"}} key={el.id}>
 
               <img src={el.image} alt={el.name}width={200}height={200}/>
-              <p>Title:{el.title}</p>
-              <p>category:{el.category}</p>
+              <p>{el.title}</p>
+              <p>{el.category}</p>
               <p>price:{el.price}</p>
-              <button  onClick={
+              <button style={{height:"30px",width:"200px",backgroundColor:"purple",color:"white",border:"white"}} onClick={()=>{
 
+                if(checkDuplicate(el)){
+                  alert("Product Already in Cart")
+                }else{
+                  let cartData = JSON.parse(localStorage.getItem('cart'));
+                  cartData.push({...el,quantity:1})
+                  // CartArr.push({...el,quantity:1})
+                  localStorage.setItem("cart",JSON.stringify(cartData))
+                  alert("Product Added To Cart")
 
-
-()=>{
-  if(checkDuplicate(el)){
-     alert("Product Already in Cart")
-   }else{
-    CartArr.push({...el,quantity:1})
-    localStorage.setItem("cart",JSON.stringify(CartArr))
-     alert("Product Added To Cart")
-
- }
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-              } >Add to Cart</button>
+              }
+              }} ><b>Add to Cart</b></button>
             </div>
           ))}
           
