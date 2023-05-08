@@ -1,7 +1,7 @@
 import React from "react";
 import { useEffect, useState } from 'react';
 import logo from "../images/p1.png"
-
+let CartArr=JSON.parse(localStorage.getItem("cart"))||[]
 
 const intialstate={
     title:"",
@@ -10,7 +10,14 @@ const intialstate={
     price:""
   }
 
-
+  function  checkDuplicate(product){
+    for(let i=0;i<CartArr.length;i++){
+      if(CartArr[i].id===product.id){
+        return true
+      }
+    }
+    return false
+}
 
 function Home (){
 
@@ -20,6 +27,7 @@ function Home (){
     const [page ,setpage] = useState(1)
     const [filterby, setfilterby] = useState("")
     const [sortby, setsortby] = useState("")
+    
     const limit=8
     const sort="price"
     
@@ -73,30 +81,30 @@ function Home (){
           
          
           <input type="radio" name='category' value="category" 
-          checked ={filterby=="electronics"}
+          checked ={filterby=="mixed"}
           onChange={()=>{
-            setfilterby("electronics")
+            setfilterby("mixed")
           }}
           />
-          <label>filter by electronics</label>
+          <label>filter by mixed</label>
 
 
           <input type="radio" name='category' value="category" 
-          checked ={filterby=="jewelery"}
+          checked ={filterby=="birthday"}
           onChange={()=>{
-            setfilterby("jewelery")
+            setfilterby("birthday")
           }}
           />
-          <label>filter by jewelery</label>
+          <label>filter by birthday</label>
 
 
           <input type="radio" name='category' value="category" 
-          checked ={filterby=="clothings"}
+          checked ={filterby=="anniversary"}
           onChange={()=>{
-            setfilterby("clothings")
+            setfilterby("anniversary")
           }}
           />
-          <label>filter by clothings</label>
+          <label>filter by anniversary</label>
 
           {/* <input type="radio" name='category' value="category" 
           checked ={filterby==""}
@@ -105,7 +113,7 @@ function Home (){
           }}
           />
           <label>reset</label> */}
-          <button onClick={()=>setfilterby("")}>seset</button>
+          <button onClick={()=>setfilterby("")}>reset</button>
         </div>
         <div>
        <button onClick={()=>setsortby("asc")}>sort by asc</button>
@@ -123,6 +131,34 @@ function Home (){
               <p>Title:{el.title}</p>
               <p>category:{el.category}</p>
               <p>price:{el.price}</p>
+              <button  onClick={
+
+
+
+()=>{
+  if(checkDuplicate(el)){
+     alert("Product Already in Cart")
+   }else{
+    CartArr.push({...el,quantity:1})
+    localStorage.setItem("cart",JSON.stringify(CartArr))
+     alert("Product Added To Cart")
+
+ }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+              } >Add to Cart</button>
             </div>
           ))}
           
