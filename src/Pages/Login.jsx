@@ -27,11 +27,11 @@ import { useContext } from "react";
             <h1  style={{color:"white"}}><b>Hello!</b></h1>
             <br/>
             <br/>
-            <input type="email"  placeholder="Enter Your Email" id="email" style={{ fontSize:"25px",width:"70%",outline:"none",backgroundColor:"red",color:"white"}}/>
+            <input type="email"  placeholder="Enter Your Email" id="email" style={{ fontSize:"25px",width:"70%",outline:"none",color:"white"}}/>
             <br/>
             <br/>
         <input type="password" placeholder="Enter Your password"  id="password" style={{ fontSize:"25px",width:"70%"
-      ,backgroundColor:"#00796B",color:"white"}}/>
+      ,color:"white"}}/>
         <br/>
         <br/>
         <br/>

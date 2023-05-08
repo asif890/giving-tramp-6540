@@ -1,6 +1,8 @@
 import React from "react";
 import { useEffect, useState } from 'react';
 import logo from "../images/p1.png"
+import last from "../images/p3.jpg"
+
 let CartArr=JSON.parse(localStorage.getItem("cart"))||[]
 
 const intialstate={
@@ -73,39 +75,62 @@ function Home (){
     
     return (
         <div>
-            
-           
+        
             <div className="App">
       <div>
-        <div>
+        <div style={{display:"flex",justifyContent:"space-between",width:"70%"}}>
           
-         
+         <div>
           <input type="radio" name='category' value="category" 
           checked ={filterby=="mixed"}
           onChange={()=>{
             setfilterby("mixed")
           }}
           />
-          <label>filter by mixed</label>
-
-
+          <label>Mixed</label>
+          </div>
+          <div>
           <input type="radio" name='category' value="category" 
           checked ={filterby=="birthday"}
           onChange={()=>{
             setfilterby("birthday")
           }}
           />
-          <label>filter by birthday</label>
-
-
+          <label>Birthday</label>
+          </div>
+          <div>
           <input type="radio" name='category' value="category" 
           checked ={filterby=="anniversary"}
           onChange={()=>{
             setfilterby("anniversary")
           }}
           />
-          <label>filter by anniversary</label>
+          <label>Anniversary</label>
+          </div>
 
+
+          <div>
+          <input type="radio" name='category' value="category" 
+          checked ={filterby=="roses"}
+          onChange={()=>{
+            setfilterby("roses")
+          }}
+          />
+          <label>Roses</label>
+          </div>
+
+
+
+
+          <div>
+          <input type="radio" name='category' value="category" 
+          checked ={filterby=="occasions"}
+          onChange={()=>{
+            setfilterby("occasions")
+          }}
+          />
+          <label>Occasions</label>
+          </div>
           {/* <input type="radio" name='category' value="category" 
           checked ={filterby==""}
           onChange={()=>{
@@ -113,7 +138,7 @@ function Home (){
           }}
           />
           <label>reset</label> */}
-          <button onClick={()=>setfilterby("")}>reset</button>
+          <div><button onClick={()=>setfilterby("")}>reset</button></div>
         </div>
         <div>
        <button onClick={()=>setsortby("asc")}>sort by asc</button>
@@ -170,6 +195,9 @@ function Home (){
         </div>
       </div>
     </div>
+    <div>
+            <img src={last}/>
+            </div>
         </div>
     )
 }
