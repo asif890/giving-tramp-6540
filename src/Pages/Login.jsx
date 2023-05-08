@@ -36,7 +36,7 @@ import { useContext } from "react";
         <br/>
         <br/>
         <br/>
-        <p style={{color:"white"}}   >by continuing I agree to FlowerAura’s Terms & Conditions and Privacy Policy</p>
+        <p style={{color:"white"}}>by continuing I agree to FlowerAura’s Terms & Conditions and Privacy Policy</p>
 
             <button style={{height:"40px",width:"70%",backgroundColor:"#00796B",color:"white"}} onClick={login }>Login </button>
             </div>
